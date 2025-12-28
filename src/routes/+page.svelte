@@ -1,5 +1,5 @@
 <script lang="ts">
-  import PayjpCheckout from '../components/payjp_checkout.svelte';
+  import PayjpCheckout from '../components/payjp-checkout.svelte';
   import { PUBLIC_PAYJP_DATA_KEY } from '$env/static/public';
 
   const dataKey = PUBLIC_PAYJP_DATA_KEY;

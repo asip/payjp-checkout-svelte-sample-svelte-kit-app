@@ -1,6 +1,6 @@
 # PAY.JP Checkout Sample App with SvelteKit
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+<https://qiita.com/asip2k25/items/9687d19dad6481137785>
 
 ## Developing
 
@@ -13,14 +13,6 @@ pnpm dev
 pnpm dev --open
 ```
 
-## Building
+## License
 
-To create a production version of your app:
-
-```bash
-pnpm build
-```
-
-You can preview the production build with `pnpm preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+The MIT License (MIT).

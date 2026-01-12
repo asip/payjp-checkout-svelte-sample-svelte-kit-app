@@ -1,4 +1,4 @@
-# PAY.JP Checkout Sample App with SvelteKit
+# PAY.JP Checkout Sample App with SvelteKit 2
 
 <https://qiita.com/asip2k25/items/9687d19dad6481137785>
 

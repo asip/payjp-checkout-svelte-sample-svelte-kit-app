@@ -1,14 +1,18 @@
 <script lang="ts">
   import PayjpCheckout from '../components/payjp-checkout.svelte';
+  import type {
+    PayjpCheckoutPayload,
+    PayjpCheckoutErrorPayload
+  } from '../components/payjp-checkout.svelte';
   import { PUBLIC_PAYJP_DATA_KEY } from '$env/static/public';
 
   const dataKey = PUBLIC_PAYJP_DATA_KEY;
 
-  const onCreated = (payload: any) => {
+  const onCreated = (payload: PayjpCheckoutPayload) => {
     console.log(payload.token);
   };
 
-  const onFailed = (payload: any) => {
+  const onFailed = (payload: PayjpCheckoutErrorPayload) => {
     console.log(payload.message);
   };
 </script>

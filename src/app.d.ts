@@ -1,4 +1,10 @@
 // See https://svelte.dev/docs/kit/types#app.d.ts
+
+import type {
+  PayjpCheckoutResponse,
+  PayjpCheckoutErrorResponse
+} from './components/payjp-checkout.svelte';
+
 // for information about these interfaces
 declare global {
   namespace App {
@@ -9,12 +15,13 @@ declare global {
     // interface Platform {}
   }
   interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    payjpCheckoutOnCreated: ((response: any) => void) | null;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    payjpCheckoutOnFailed: ((statusCode: any, errorResponse: any) => void) | null;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    PayjpCheckout: any | null;
+    payjpCheckoutOnCreated: ((response: PayjpCheckoutResponse) => void) | null;
+
+    payjpCheckoutOnFailed:
+      | ((statusCode: number, errorResponse: PayjpCheckoutErrorResponse) => void)
+      | null;
+
+    PayjpCheckout: unknown | null;
   }
 }
 

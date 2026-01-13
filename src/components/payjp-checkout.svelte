@@ -1,5 +1,5 @@
 <script lang="ts">
-  interface CheckoutResponse {
+  export interface PayjpCheckoutResponse {
     // card: any
     // created: number
     id: string;
@@ -8,18 +8,18 @@
     // used: boolean
   }
 
-  interface CheckoutErrorResponse {
+  export interface PayjpCheckoutErrorResponse {
     // code: string
     message: string;
     // status: number // http (response) status code
     // type: string
   }
 
-  interface PayjpCheckoutPayload {
+  export interface PayjpCheckoutPayload {
     token: string;
   }
 
-  interface PayjpCheckoutErrorPayload {
+  export interface PayjpCheckoutErrorPayload {
     statusCode: number;
     message: string;
   }
@@ -50,12 +50,14 @@
     onFailedHandler: (payload: PayjpCheckoutErrorPayload) => void;
   }>();
 
-  const handleCheckoutCreated = (response: CheckoutResponse) => {
+  const payjpCheckoutId = $props.id();
+
+  const handleCheckoutCreated = (response: PayjpCheckoutResponse) => {
     const payload: PayjpCheckoutPayload = { token: response.id };
     onCreatedHandler(payload);
   };
 
-  const handleCheckoutFailed = (statusCode: number, errorResponse: CheckoutErrorResponse) => {
+  const handleCheckoutFailed = (statusCode: number, errorResponse: PayjpCheckoutErrorResponse) => {
     const payload: PayjpCheckoutErrorPayload = { statusCode, message: errorResponse.message };
     onFailedHandler(payload);
   };
@@ -63,6 +65,11 @@
   $effect(() => {
     window.payjpCheckoutOnCreated = handleCheckoutCreated;
     window.payjpCheckoutOnFailed = handleCheckoutFailed;
+    /*
+    PAY.JP の checkout から呼ばれる window.alert を無効化
+    // カード情報が不正のときに window.alert が payjp の checkout から呼ばれるため
+    window.alert = () => {};
+    */
 
     const script = document.createElement('script');
     script.src = 'https://checkout.pay.jp/';
@@ -79,7 +86,7 @@
     if (dataTenant) script.dataset['tenant'] = dataTenant;
     script.classList.add('payjp-button');
 
-    const element = document.querySelector('#payjp_dialog');
+    const element = document.querySelector(`#${payjpCheckoutId}`);
     element?.appendChild(script);
 
     return () => {
@@ -91,4 +98,4 @@
   });
 </script>
 
-<div id="payjp_dialog"></div>
+<div id={payjpCheckoutId}></div>

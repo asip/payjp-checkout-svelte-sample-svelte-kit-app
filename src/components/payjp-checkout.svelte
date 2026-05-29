@@ -1,5 +1,10 @@
 <script lang="ts">
-  export interface PayjpCheckoutResponse {
+  import type {
+    PayjpCheckoutPayload,
+    PayjpCheckoutErrorPayload,
+  } from '$lib'
+
+  interface PayjpCheckoutResponse {
     // card: any
     // created: number
     id: string;
@@ -8,20 +13,11 @@
     // used: boolean
   }
 
-  export interface PayjpCheckoutErrorResponse {
+  interface PayjpCheckoutErrorResponse {
     // code: string
     message: string;
     // status: number // http (response) status code
     // type: string
-  }
-
-  export interface PayjpCheckoutPayload {
-    token: string;
-  }
-
-  export interface PayjpCheckoutErrorPayload {
-    statusCode: number;
-    message: string;
   }
 
   let {

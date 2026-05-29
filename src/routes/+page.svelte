@@ -3,7 +3,7 @@
   import type {
     PayjpCheckoutPayload,
     PayjpCheckoutErrorPayload
-  } from '../components/payjp-checkout.svelte';
+  } from '$lib';
   import { PUBLIC_PAYJP_DATA_KEY } from '$env/static/public';
 
   const dataKey = PUBLIC_PAYJP_DATA_KEY;

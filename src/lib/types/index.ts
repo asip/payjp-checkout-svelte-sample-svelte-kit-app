@@ -1,3 +1,1 @@
-export type {
-  PayjpCheckoutPayload, PayjpCheckoutErrorPayload
-} from './payjp-checkout'
+export type { PayjpCheckoutPayload, PayjpCheckoutErrorPayload } from './payjp-checkout'

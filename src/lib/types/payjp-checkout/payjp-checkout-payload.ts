@@ -1,3 +1,3 @@
 export interface PayjpCheckoutPayload {
-  token: string;
+  token: string
 }

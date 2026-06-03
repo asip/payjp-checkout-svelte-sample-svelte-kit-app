@@ -1,2 +1,2 @@
-ignoredBuiltDependencies:
-  - esbuild
+minimumReleaseAgeExclude:
+  - '@sveltejs/kit@2.62.0'

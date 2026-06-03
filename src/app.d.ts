@@ -2,8 +2,8 @@
 
 import type {
   PayjpCheckoutResponse,
-  PayjpCheckoutErrorResponse
-} from './components/payjp-checkout.svelte';
+  PayjpCheckoutErrorResponse,
+} from './components/payjp-checkout.svelte'
 
 // for information about these interfaces
 declare global {
@@ -15,14 +15,14 @@ declare global {
     // interface Platform {}
   }
   interface Window {
-    payjpCheckoutOnCreated: ((response: PayjpCheckoutResponse) => void) | null;
+    payjpCheckoutOnCreated: ((response: PayjpCheckoutResponse) => void) | null
 
     payjpCheckoutOnFailed:
       | ((statusCode: number, errorResponse: PayjpCheckoutErrorResponse) => void)
-      | null;
+      | null
 
-    PayjpCheckout: unknown | null;
+    PayjpCheckout: unknown | null
   }
 }
 
-export {};
+export {}

@@ -14,15 +14,6 @@ declare global {
     // interface PageState {}
     // interface Platform {}
   }
-  interface Window {
-    payjpCheckoutOnCreated: ((response: PayjpCheckoutResponse) => void) | null
-
-    payjpCheckoutOnFailed:
-      | ((statusCode: number, errorResponse: PayjpCheckoutErrorResponse) => void)
-      | null
-
-    PayjpCheckout: unknown | null
-  }
 }
 
 export {}

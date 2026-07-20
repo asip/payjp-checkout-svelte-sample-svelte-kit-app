@@ -1,3 +1,17 @@
+<script module lang="ts">
+  interface PayjpWindow extends Window {
+    payjpCheckoutOnCreated: ((response: PayjpCheckoutResponse) => void) | null
+
+    payjpCheckoutOnFailed:
+      | ((statusCode: number, errorResponse: PayjpCheckoutErrorResponse) => void)
+      | null
+
+    PayjpCheckout: unknown | null
+  }
+
+  declare const window: PayjpWindow
+</script>
+
 <script lang="ts">
   import type {
     PayjpCheckoutPayload,

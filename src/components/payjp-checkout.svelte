@@ -1,15 +1,15 @@
 <script module lang="ts">
-  interface PayjpWindow extends Window {
-    payjpCheckoutOnCreated: ((response: PayjpCheckoutResponse) => void) | null
+  declare global {
+    interface Window {
+      payjpCheckoutOnCreated: ((response: PayjpCheckoutResponse) => void) | null
 
-    payjpCheckoutOnFailed:
-      | ((statusCode: number, errorResponse: PayjpCheckoutErrorResponse) => void)
-      | null
+      payjpCheckoutOnFailed:
+        | ((statusCode: number, errorResponse: PayjpCheckoutErrorResponse) => void)
+        | null
 
-    PayjpCheckout: unknown | null
+      payjpCheckout: unknown | null
+    }
   }
-
-  declare const window: PayjpWindow
 </script>
 
 <script lang="ts">
@@ -103,7 +103,7 @@
       element?.removeChild(script as Node);
       window.payjpCheckoutOnCreated = null;
       window.payjpCheckoutOnFailed = null;
-      window.PayjpCheckout = null;
+      window.payjpCheckout = null;
     };
   });
 </script>

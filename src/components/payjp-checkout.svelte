@@ -7,7 +7,7 @@
         | ((statusCode: number, errorResponse: PayjpCheckoutErrorResponse) => void)
         | null
 
-      payjpCheckout: unknown | null
+      PayjpCheckout: unknown | null
     }
   }
 </script>
@@ -103,7 +103,7 @@
       element?.removeChild(script as Node);
       window.payjpCheckoutOnCreated = null;
       window.payjpCheckoutOnFailed = null;
-      window.payjpCheckout = null;
+      window.PayjpCheckout = null;
     };
   });
 </script>

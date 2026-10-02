@@ -16,7 +16,7 @@
   import type {
     PayjpCheckoutPayload,
     PayjpCheckoutErrorPayload,
-  } from '$lib'
+  } from '#lib'
 
   interface PayjpCheckoutResponse {
     // card: any

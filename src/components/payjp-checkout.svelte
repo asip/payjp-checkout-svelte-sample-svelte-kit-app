@@ -1,4 +1,20 @@
 <script module lang="ts">
+  interface PayjpCheckoutResponse {
+    // card: any
+    // created: number
+    id: string;
+    // livemode: boolean
+    // object: string
+    // used: boolean
+  }
+
+  interface PayjpCheckoutErrorResponse {
+    // code: string
+    message: string;
+    // status: number // http (response) status code
+    // type: string
+  }
+
   declare global {
     interface Window {
       payjpCheckoutOnCreated: ((response: PayjpCheckoutResponse) => void) | null
@@ -18,22 +34,6 @@
     PayjpCheckoutErrorPayload,
   } from '#lib'
 
-  interface PayjpCheckoutResponse {
-    // card: any
-    // created: number
-    id: string;
-    // livemode: boolean
-    // object: string
-    // used: boolean
-  }
-
-  interface PayjpCheckoutErrorResponse {
-    // code: string
-    message: string;
-    // status: number // http (response) status code
-    // type: string
-  }
-
   let {
     dataKey,
     dataPartial,
@@ -46,7 +46,7 @@
     dataTenant,
     onCreatedHandler,
     onFailedHandler
-  } = $props<{
+  }: {
     dataKey: string;
     dataPartial?: string;
     dataText?: string;
@@ -58,7 +58,7 @@
     dataTenant?: string;
     onCreatedHandler: (payload: PayjpCheckoutPayload) => void;
     onFailedHandler: (payload: PayjpCheckoutErrorPayload) => void;
-  }>();
+  } = $props();
 
   const payjpCheckoutId = $props.id();
 

@@ -15,6 +15,18 @@
     // type: string
   }
 
+  interface DataProperties {
+    key: string,
+    partial?: string,
+    text?: string,
+    submitText?: string,
+    tokenName?: string,
+    previousToken?: string,
+    lang?: string,
+    namePlaceholder?: string,
+    tenant?: string,
+  }
+
   declare global {
     interface Window {
       payjpCheckoutOnCreated: ((response: PayjpCheckoutResponse) => void) | null
@@ -34,31 +46,17 @@
     PayjpCheckoutErrorPayload,
   } from '#lib'
 
+  interface PayjpCheckoutProps {
+    data: DataProperties,
+    onCreatedHandler: (payload: PayjpCheckoutPayload) => void,
+    onFailedHandler: (payload: PayjpCheckoutErrorPayload) => void
+  }
+
   let {
-    dataKey,
-    dataPartial,
-    dataText,
-    dataSubmitText,
-    dataTokenName,
-    dataPreviousToken,
-    dataLang,
-    dataNamePlaceholder,
-    dataTenant,
+    data,
     onCreatedHandler,
     onFailedHandler
-  }: {
-    dataKey: string;
-    dataPartial?: string;
-    dataText?: string;
-    dataSubmitText?: string;
-    dataTokenName?: string;
-    dataPreviousToken?: string;
-    dataLang?: string;
-    dataNamePlaceholder?: string;
-    dataTenant?: string;
-    onCreatedHandler: (payload: PayjpCheckoutPayload) => void;
-    onFailedHandler: (payload: PayjpCheckoutErrorPayload) => void;
-  } = $props();
+  }: PayjpCheckoutProps = $props();
 
   const payjpCheckoutId = $props.id();
 
@@ -83,18 +81,18 @@
 
     const script = document.createElement('script');
     script.src = 'https://checkout.pay.jp/';
-    script.dataset['onCreated'] = 'payjpCheckoutOnCreated';
-    script.dataset['onFailed'] = 'payjpCheckoutOnFailed';
-    script.dataset['key'] = dataKey;
-    script.dataset['partial'] = dataPartial || 'false';
-    if (dataText) script.dataset['text'] = dataText;
-    if (dataSubmitText) script.dataset['submitText'] = dataSubmitText;
-    if (dataTokenName) script.dataset['tokenName'] = dataTokenName;
-    if (dataPreviousToken) script.dataset['previousToken'] = dataPreviousToken;
-    if (dataLang) script.dataset['lang'] = dataLang;
-    if (dataNamePlaceholder) script.dataset['namePlaceholder'] = dataNamePlaceholder;
-    if (dataTenant) script.dataset['tenant'] = dataTenant;
     script.classList.add('payjp-button');
+    script.dataset.onCreated = 'payjpCheckoutOnCreated';
+    script.dataset.onFailed = 'payjpCheckoutOnFailed';
+    script.dataset.key = data.key;
+    script.dataset.partial = data.partial ?? 'false';
+    if (data.text) script.dataset.text = data.text;
+    if (data.submitText) script.dataset.submitText = data.submitText;
+    if (data.tokenName) script.dataset.tokenName = data.tokenName;
+    if (data.previousToken) script.dataset.previousToken = data.previousToken;
+    if (data.lang) script.dataset.lang = data.lang;
+    if (data.namePlaceholder) script.dataset.namePlaceholder = data.namePlaceholder;
+    if (data.tenant) script.dataset.tenant = data.tenant;
 
     const element = document.querySelector(`#${payjpCheckoutId}`);
     element?.appendChild(script);

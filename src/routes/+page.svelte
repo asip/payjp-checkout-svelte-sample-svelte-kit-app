@@ -3,7 +3,7 @@
   import type { PayjpCheckoutPayload, PayjpCheckoutErrorPayload } from '#lib';
   import { PUBLIC_PAYJP_DATA_KEY } from '$app/env/public';
 
-  const dataKey = PUBLIC_PAYJP_DATA_KEY;
+  const data = { key: PUBLIC_PAYJP_DATA_KEY, partial: "true" };
 
   const onCreated = (payload: PayjpCheckoutPayload) => {
     console.log(payload.token);
@@ -15,8 +15,7 @@
 </script>
 
 <PayjpCheckout
-  dataKey={dataKey}
-  dataPartial="true"
+  data="{ data }"
   onCreatedHandler={onCreated}
   onFailedHandler={onFailed}
 />

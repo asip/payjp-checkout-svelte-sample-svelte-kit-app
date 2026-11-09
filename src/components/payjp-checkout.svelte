@@ -48,31 +48,31 @@
 
   interface PayjpCheckoutProps {
     data: DataProperties,
-    onCreatedHandler: (payload: PayjpCheckoutPayload) => void,
-    onFailedHandler: (payload: PayjpCheckoutErrorPayload) => void
+    onSuccess: (payload: PayjpCheckoutPayload) => void,
+    onError: (payload: PayjpCheckoutErrorPayload) => void
   }
 
   let {
     data,
-    onCreatedHandler,
-    onFailedHandler
+    onSuccess,
+    onError,
   }: PayjpCheckoutProps = $props();
 
   const payjpCheckoutId = $props.id();
 
-  const handleCheckoutCreated = (response: PayjpCheckoutResponse) => {
+  const onCreated = (response: PayjpCheckoutResponse) => {
     const payload: PayjpCheckoutPayload = { token: response.id };
-    onCreatedHandler(payload);
+    onSuccess(payload);
   };
 
-  const handleCheckoutFailed = (statusCode: number, errorResponse: PayjpCheckoutErrorResponse) => {
+  const onFailed = (statusCode: number, errorResponse: PayjpCheckoutErrorResponse) => {
     const payload: PayjpCheckoutErrorPayload = { statusCode, message: errorResponse.message };
-    onFailedHandler(payload);
+    onError(payload);
   };
 
   $effect(() => {
-    window.payjpCheckoutOnCreated = handleCheckoutCreated;
-    window.payjpCheckoutOnFailed = handleCheckoutFailed;
+    window.payjpCheckoutOnCreated = onCreated;
+    window.payjpCheckoutOnFailed = onFailed;
     /*
     PAY.JP の checkout から呼ばれる window.alert を無効化
     // カード情報が不正のときに window.alert が payjp の checkout から呼ばれるため

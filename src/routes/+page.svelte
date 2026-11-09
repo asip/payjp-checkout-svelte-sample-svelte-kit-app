@@ -5,17 +5,17 @@
 
   const data = { key: PUBLIC_PAYJP_DATA_KEY, partial: "true" };
 
-  const onCreated = (payload: PayjpCheckoutPayload) => {
+  const onSuccess = (payload: PayjpCheckoutPayload) => {
     console.log(payload.token);
   };
 
-  const onFailed = (payload: PayjpCheckoutErrorPayload) => {
+  const onError = (payload: PayjpCheckoutErrorPayload) => {
     console.log(payload.message);
   };
 </script>
 
 <PayjpCheckout
   data="{ data }"
-  onCreatedHandler={onCreated}
-  onFailedHandler={onFailed}
+  onSuccess={onSuccess}
+  onError={onError}
 />

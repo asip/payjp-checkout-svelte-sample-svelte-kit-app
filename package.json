@@ -25,7 +25,7 @@
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.65.1",
     "@sveltejs/adapter-auto": "^9.0.0",
-    "@sveltejs/kit": "^3.4.0",
+    "@sveltejs/kit": "^3.4.1",
     "@sveltejs/vite-plugin-svelte": "^7.3.2",
     "@testing-library/jest-dom": "^8.0.0",
     "@testing-library/svelte": "^5.4.2",
@@ -34,11 +34,11 @@
     "globals": "^17.14.0",
     "jsdom": "^31.0.1",
     "oxfmt": "^0.80.0",
-    "svelte": "^5.58.0",
+    "svelte": "^5.59.2",
     "svelte-check": "^4.7.8",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.74.0",
-    "vite": "^8.3.8",
-    "vitest": "^5.1.1"
+    "vite": "^8.4.0",
+    "vitest": "^5.1.2"
   }
 }
